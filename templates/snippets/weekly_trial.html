@@ -1,0 +1,19 @@
+{% for m in menus %}
+    {% if m.name == "Weekly Trial" %}
+        <section class="py-5" style="background: #f5f8fa;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 align-self-center">
+                        <h3 class="fw-bold">Not Sure Yet? Try our food for {{ m.days }} days in PKR {{ m.price }}</h3>
+                        <p>You will get food for {{ m.persons }} person {{ m.meals }} Time Meal for {{ m.days }} days.</p>
+                    </div>
+                    <div class="col align-self-center">
+                        {% for item in m.monthly_item.all|slice:":1" %}
+                            <a class="cta-btn cta-btn-primary" href="{% url "core:order" item.unique_id %}">Order Weekly Trial</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endfor %}

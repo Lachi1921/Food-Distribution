@@ -1,0 +1,424 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="fw-bold my-5" style="font-weight: 600;">Create a menu</h2>
+    <form method="POST" class="form">
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in form.non_field_errors %}
+                    <li class="error-text">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="mb-3 col-6">
+                <label for="id_name">Name:</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <ul>
+                        {% for error in form.name.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_breif_desc">Brief desc:</label>
+                {{ form.breif_desc }}
+                {% if form.breif_desc.errors %}
+                    <ul>
+                        {% for error in form.breif_desc.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-12">
+                <label for="id_desc">Desc:</label>
+                {{ form.desc }}
+                {% if form.desc.errors %}
+                    <ul>
+                        {% for error in form.desc.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Price, Slug, Popular, Nav Link Fields -->
+        <div class="row mb-3">
+            <div class="mb-3 col-6">
+                <label for="id_price">Persons:</label>
+                {{ form.persons }}
+                {% if form.persons.errors %}
+                    <ul>
+                        {% for error in form.persons.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Days:</label>
+                {{ form.days }}
+                {% if form.days.errors %}
+                    <ul>
+                        {% for error in form.days.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Meals:</label>
+                {{ form.meals }}
+                {% if form.meals.errors %}
+                    <ul>
+                        {% for error in form.meals.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Price:</label>
+                {{ form.price }}
+                {% if form.price.errors %}
+                    <ul>
+                        {% for error in form.price.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-12">
+                <label for="id_slug">Slug:</label>
+                {{ form.slug }}
+                {% if form.slug.errors %}
+                    <ul>
+                        {% for error in form.slug.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_popular">Popular:</label>
+                {{ form.popular }}
+                {% if form.popular.errors %}
+                    <ul>
+                        {% for error in form.popular.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_nav_link">Nav link:</label>
+                {{ form.nav_link }}
+                {% if form.nav_link.errors %}
+                    <ul>
+                        {% for error in form.nav_link.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Week 1 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 1</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week1_mon_item">Mon Item:</label>
+                {{ form.week1_mon_item }}
+                {% if form.week1_mon_item.errors %}
+                    <ul>
+                        {% for error in form.week1_mon_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_tue_item">Tue Item:</label>
+                {{ form.week1_tue_item }}
+                {% if form.week1_tue_item.errors %}
+                    <ul>
+                        {% for error in form.week1_tue_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_wed_item">Wed Item:</label>
+                {{ form.week1_wed_item }}
+                {% if form.week1_wed_item.errors %}
+                    <ul>
+                        {% for error in form.week1_wed_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_thu_item">Thu Item:</label>
+                {{ form.week1_thu_item }}
+                {% if form.week1_thu_item.errors %}
+                    <ul>
+                        {% for error in form.week1_thu_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_fri_item">Fri Item:</label>
+                {{ form.week1_fri_item }}
+                {% if form.week1_fri_item.errors %}
+                    <ul>
+                        {% for error in form.week1_fri_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_sat_item">Sat Item:</label>
+                {{ form.week1_sat_item }}
+                {% if form.week1_sat_item.errors %}
+                    <ul>
+                        {% for error in form.week1_sat_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 2</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week2_mon_item">Mon Item:</label>
+                {{ form.week2_mon_item }}
+                {% if form.week2_mon_item.errors %}
+                    <ul>
+                        {% for error in form.week2_mon_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_tue_item">Tue Item:</label>
+                {{ form.week2_tue_item }}
+                {% if form.week2_tue_item.errors %}
+                    <ul>
+                        {% for error in form.week2_tue_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_wed_item">Wed Item:</label>
+                {{ form.week2_wed_item }}
+                {% if form.week2_wed_item.errors %}
+                    <ul>
+                        {% for error in form.week2_wed_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_thu_item">Thu Item:</label>
+                {{ form.week2_thu_item }}
+                {% if form.week2_thu_item.errors %}
+                    <ul>
+                        {% for error in form.week2_thu_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_fri_item">Fri Item:</label>
+                {{ form.week2_fri_item }}
+                {% if form.week2_fri_item.errors %}
+                    <ul>
+                        {% for error in form.week2_fri_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_sat_item">Sat Item:</label>
+                {{ form.week2_sat_item }}
+                {% if form.week2_sat_item.errors %}
+                    <ul>
+                        {% for error in form.week2_sat_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 3</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week3_mon_item">Mon Item:</label>
+                {{ form.week3_mon_item }}
+                {% if form.week3_mon_item.errors %}
+                    <ul>
+                        {% for error in form.week3_mon_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_tue_item">Tue Item:</label>
+                {{ form.week3_tue_item }}
+                {% if form.week3_tue_item.errors %}
+                    <ul>
+                        {% for error in form.week3_tue_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_wed_item">Wed Item:</label>
+                {{ form.week3_wed_item }}
+                {% if form.week3_wed_item.errors %}
+                    <ul>
+                        {% for error in form.week3_wed_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_thu_item">Thu Item:</label>
+                {{ form.week3_thu_item }}
+                {% if form.week3_thu_item.errors %}
+                    <ul>
+                        {% for error in form.week3_thu_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_fri_item">Fri Item:</label>
+                {{ form.week3_fri_item }}
+                {% if form.week3_fri_item.errors %}
+                    <ul>
+                        {% for error in form.week3_fri_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_sat_item">Sat Item:</label>
+                {{ form.week3_sat_item }}
+                {% if form.week3_sat_item.errors %}
+                    <ul>
+                        {% for error in form.week3_sat_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 4</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week4_mon_item">Mon Item:</label>
+                {{ form.week4_mon_item }}
+                {% if form.week4_mon_item.errors %}
+                    <ul>
+                        {% for error in form.week4_mon_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_tue_item">Tue Item:</label>
+                {{ form.week4_tue_item }}
+                {% if form.week4_tue_item.errors %}
+                    <ul>
+                        {% for error in form.week4_tue_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_wed_item">Wed Item:</label>
+                {{ form.week4_wed_item }}
+                {% if form.week4_wed_item.errors %}
+                    <ul>
+                        {% for error in form.week4_wed_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_thu_item">Thu Item:</label>
+                {{ form.week4_thu_item }}
+                {% if form.week4_thu_item.errors %}
+                    <ul>
+                        {% for error in form.week4_thu_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_fri_item">Fri Item:</label>
+                {{ form.week4_fri_item }}
+                {% if form.week4_fri_item.errors %}
+                    <ul>
+                        {% for error in form.week4_fri_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_sat_item">Sat Item:</label>
+                {{ form.week4_sat_item }}
+                {% if form.week4_sat_item.errors %}
+                    <ul>
+                        {% for error in form.week4_sat_item.errors %}
+                            <li class="error-text">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <button type="submit" class="cta-btn cta-btn-primary">Create menu</button>
+    </form>
+</div>
+
+{% endblock content %}

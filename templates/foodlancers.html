@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="container py-5">
+        <h2 class="fw-bold mb-3" style="font-weight: 600;">Registered Foodlancers</h2>
+        
+        <div class="row py-2 fw-bold text-center" style="border-bottom: 2px solid #000; background-color: #f8f9fa;">
+            <div class="col-lg-1 col-md-1 col-sm-6">Name</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Kitchen Name</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Phone</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Email</div>
+            <div class="col-lg-3 col-md-3 col-sm-6">Address</div>
+        </div>
+        
+        {% for foodlancer in foodlancers %}
+            <div class="row py-3 align-items-center text-center" style="border-bottom: 1px solid #ccc;">
+                <div class="col-lg-1 col-md-1 col-sm-6">
+                    <span class="fw-bold">{{ foodlancer.name }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span>{{ foodlancer.kitchen_name }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span>{{ foodlancer.phone }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span>{{ foodlancer.email }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    {% if foodlancer.address %}
+                        <span>{{ foodlancer.address }}</span>
+                    {% else %}
+                        <span class="text-muted">No Address</span>
+                    {% endif %}
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <a href="{% url 'core:edit-foodlancer' foodlancer.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'core:delete-foodlancer' foodlancer.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this foodlancer?');">Delete</a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center my-3">No foodlancers registered yet</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

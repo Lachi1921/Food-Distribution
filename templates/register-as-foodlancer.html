@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Sell homemade food online at lunch.pk - Become a Foodlancer{% endblock title %}
+
+{% block meta %}
+<meta name="description" content="Lunch.pk offers you guaranteed customers in your area. Turn your cooking passion into your business. Become a foodlancer and start your home based business.">
+<meta property="og:type" content="Become a Foodlancer">
+<meta property="og:title" content="Sell homemade food online at lunch.pk - Become a Foodlancer">
+<meta property="og:description" content="Lunch.pk offers you guaranteed customers in your area. Turn your cooking passion into your business. Become a foodlancer and start your home based business.">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Sell homemade food online at lunch.pk - Become a Foodlancer">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="Become a Foodlancer">
+<meta name="twitter:site" content="Become a Foodlancer">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Sell homemade food online at lunch.pk - Become a Foodlancer">
+<meta name="twitter:description" content="Lunch.pk offers you guaranteed customers in your area. Turn your cooking passion into your business. Become a foodlancer and start your home based business.">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block css %}
+.hero-section {
+    background: url("{% static 'img/hero-img-2.jpg' %}") center center / cover;
+    color: #212529;
+}
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+{% endblock css %}
+
+{% block content %}
+
+<section class="hero-section">
+    <div class="overlay w-100 h-100">
+        <div class="container text-white col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="{% static "img/make-money.webp" %}" class="d-block mx-lg-auto img-fluid" alt="Hero-character"
+                        width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">Join Our Food Passionate Family!</h1>
+                    <p class="lead py-3">If food is your craft and you don’t settle with average taste. you are someone who cooks from the heart. then you are in the right place, we are waiting for you to join our food passionate family.</p>
+                    
+                    <p class="fw-bold">No Investments, No Security Deposits, No Lengthy Procedures</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="cta-btn cta-btn-primary cta-btn-lg text-center" href="{% url "core:register-foodlancer" %}">Apply now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="text-center py-5" style="background: #f5f8fa;">
+    <div class="container">
+        <h2 class="fw-bold">Join Lunch.pk in <span class="text-color-primary">3 Simple Steps</span></h2>
+        <div class="mt-5 mb-3 row">
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">1</h2>
+                    <img src="{% static "img/form.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Fill The Form</h5>
+                        <p class="mt-2 mb-0" style="font-size: 14px; line-height: 20px;">Fill the form by clicking the join us button below</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">2</h2>
+                    <img src="{% static "img/kitchen-pictures.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Send your Kitchen Pics</h5>
+                        <p class="mt-2 mb-0" style="font-size: 14px; line-height: 20px;">Send us 3 pictures of your kitchen on WhatsApp at +92 335 5517720</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">3</h2>
+                    <img src="{% static "img/food-test.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Food Test</h5>
+                        <p class="mt-2 mb-0" style="font-size: 14px; line-height: 20px;">Get your food tested by our food reviewer near you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="cta-btn cta-btn-primary cta-btn-lg text-center" href="{% url "core:register-foodlancer" %}">Join Us</a>
+    </div>
+</section>
+
+{% include "snippets/reviews.html" %}
+
+<section class="py-5" style="background: #f5f8fa;">
+    <div class="container">
+        <h2 class="h2 fw-bold mb-5">Join our Team and Start Selling Homemade Food</h2>
+        <div class="faqs py-3">
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">Who is our ideal team member?</h5>
+                    <p style="width: 85%;">We are following 2 simple principles. <br><br>1. Serve hygienic tasty homemade food <br><br>2. Empower food passionate woman<br><br> If food is your craft and you don’t settle with average taste… you are someone who cooks from the heart… then you are in the right place, we are waiting for you to join our food passionate family. Lets thrive together!</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">Who is a foodlancer?</h5>
+                    <p style="width: 85%;">You probably have heard about freelancer right? <br><br> A foodlancer is self employed person who offers his food services to any company or individuals he/she wants to. All women who have a passion of cooking and want to make money from home via lunch.pk are referred as foodlancers.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How a woman can sell food online using lunch.pk?</h5>
+                    <p style="width: 85%;">The hardest part of any business is selling and getting customers. No matter what you do and wherever you are if you have no sales you will be out of business soon. at lunch.pk we took this burden off your shoulders. We provide our foodlancer women guaranteed customers near their location. you get guaranteed sale/money into your pocket using our homemade food portal.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How much a foodlancer can make money in a month?</h5>
+                    <p style="width: 85%;">Our foodlancers have 3 levels , your level will be decided as per customer feedback. Please note that, we do not allow restaurants and hotels to register even you pay FEE.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How to apply as a foodlancer?</h5>
+                    <p style="width: 85%;">Joining lunch.pk is a simple 5 step process. <br><br>1. Fill in the register form <br><br>2. Send us 3 snaps of your kitchen from different angles on WhatsApp at +92 335 5517720 <br><br>3. Let our team test 3 different demo dishes and visit your kitchen <br><br>4. Ability to use facebook messenger, WhatsApp and emails <br><br>5. Have a rider available either from your family or 3rd party companies to deliver food within 5-10 KMs of your area.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How to get quick approval as a food lancer?</h5>
+                    <p style="width: 85%;">If you’ll follow and complete the above 5 steps, you will get quick approval.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How to not get suspended or rejected at lunch.pk?</h5>
+                    <p style="width: 85%;">Since we are on a mission to serve healthy hygienic food. We do not tolerate any complaints related to hygiene. We also do not appreciate negating our processes and policies.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">What is lunch.pk fee or charges?</h5>
+                    <p style="width: 85%;">Not only we want to serve the best healthy homemade food, But we also have a mission to empower women with true home based business. We believe we can only grow by helping you grow at a massive level. <br><br> We have RS 2000/- joining fee when you are approved. We do not offer FREE membership as FREE is never appreciated and this small fee is to filter out non serious candidates. We charge you 15% of the gross sale provided to you by lunch.pk We charge you 15% of the gross sale provided to you by lunch.pk</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How to qualify as professional or an expert level foodlancer?</h5>
+                    <p style="width: 85%;">All foodlancers with 95% plus positive feedback and having ability to retain their customers for long term (3-6 months+) get promoted to an expert level. at an expert level you get more sales and customers by the company.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How helpful is lunch.pk for women?</h5>
+                    <p style="width: 85%;">Since we are on a mission to empower women. We are putting our best efforts to make you grow and succeed. For example, most of the running businesses charge you heavy upfront franchise fee plus a monthly fee. <br><br>Additional to initial investment they charge you minimum 25% to 50% of the sale with no guarantee of any sales amount. at lunch.pk, we are looking to create win-win relationships and help you grow fast. For the same reasons there is no upfront HUGE Franchise deposit and security deposits. You can setup your own account by paying RS 2000 per month and 15% of the gross sale.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">What are your future plans?</h5>
+                    <p style="width: 85%;">Our mission to facilitate you as much as we can. in our future plan, we will facilitate with you with grocery at wholesale price at your doorstep as well as rider resources available 24/7.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">Where to send our suggestions?</h5>
+                    <p style="width: 85%;">We highly welcome your suggestions and love positive feedback. Feel free to send your suggestions and feedback at info@lunch.pk or by the contact us form.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

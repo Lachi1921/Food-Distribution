@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="container py-5">
+        <h2 class="fw-bold mb-3" style="font-weight: 600;">Invoices</h2>
+        
+        <div class="row py-2 fw-bold text-center" style="border-bottom: 2px solid #000; background-color: #f8f9fa;">
+            <div class="col-lg-2 col-md-2 col-sm-6">Invoice #</div>
+            <div class="col-lg-4 col-md-4 col-sm-6">Customer Name & Email</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Total Amount</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Paid</div>
+            <div class="col-lg-2 col-md-2 col-sm-6">Actions</div>
+        </div>
+        
+        {% for invoice in invoices %}
+            <div class="row py-3 align-items-center text-center" style="border-bottom: 1px solid #ccc;">
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span class="fw-bold">#{{ invoice.inv_num }}</span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <span>{{ invoice.order.name }}</span> - <span>{{ invoice.order.email }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span>PKR {{ invoice.order.item.price }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <span>{{ invoice.paid }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <a href="{% url 'core:delete-invoice' invoice.inv_num %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this invoice?');">Delete</a>
+                    <a href="{% url 'core:edit-invoice' invoice.inv_num %}" class="btn btn-primary btn-sm">Edit Invoice</a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center my-3">No invoices yet</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

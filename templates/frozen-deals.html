@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Frozen food delivery, homemade, Islamabad, Lahore , Karachi{% endblock title %}
+
+{% block meta %}
+<meta name="description" content="Lunch.pk is the best website frozen food delivery, in islamabad lahore and karachi.">
+<meta property="og:type" content="Frozen Foods">
+<meta property="og:title" content="Frozen food delivery, homemade, Islamabad, Lahore , Karachi">
+<meta property="og:description" content="Lunch.pk is the best website frozen food delivery, in islamabad lahore and karachi.">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Frozen food delivery, homemade, Islamabad, Lahore , Karachi">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="Frozen Foods">
+<meta name="twitter:site" content="Frozen Foods">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Frozen food delivery, homemade, Islamabad, Lahore , Karachi">
+<meta name="twitter:description" content="Lunch.pk is the best website frozen food delivery, in islamabad lahore and karachi.">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block content %}
+<section class="deals py-5" style="background: rgb(245, 248, 250);">
+    <div class="container">
+        <h1 class="h2 text-center fw-bold mb-5">Frozen Deals</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
+            {% for deal in deals %}
+                <div class="col">
+                        <div class="card mb-5" style="color: #2d3e50;border: none;">
+                            <img src="{{ deal.image.url }}" class="card-img-top" alt="{{ deal.name }}">
+                            <div class="card-body p-4" style="box-shadow: 0 0 8px 0 rgba(0,0,0,.12);">
+                                <h5 class="card-title">{{ deal.name|title }}</h5>
+                                <p class="card-text">
+                                    {{ deal.desc|title }}
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="mb-0">
+                                        Ready to dispatch in <span class="text-color-primary">1 day</span>
+                                    </h6>
+                                    <a href="{% url "core:deal-details" deal.slug %}" class="cta-btn-primary p-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" style="width: 22px; height: 22px;">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                {% empty %}
+                No deals yet!
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<section class="text-white py-5" style="background: linear-gradient(45deg, #00a4bd, #00bda5);">
+    <div class="container">
+        <h2 class="fw-bold">Never Miss Ghar Ka Khana Even You Are Away From Home.</h2>
+        <p class="my-4" style="font-weight:500">There are many restaurants apps that dish out every single cuisine at discount but Do they really can stand in front of simple homemade healthy food? Can we eat these unhealthy junk flavors everyday? Are they healthy and safe? Are they economical and make your life easy? The answer is NO, then you must take a wise decision today. at Lunch.pk, you get light-weight, healthy, homemade meals at your doorstep.</p>
+        <p class="my-4" style="font-weight:500">Why not try our homemade food and enjoy our tasty and healthy homemade cuisines. We have customers from all walks of life. Doctors, Students, Working Women, Corporate, and Families enjoy our homemade food.</p>
+        <p class="fw-bold">Health and taste comes at a high price, but we promised to be affordable and fair</p>
+    </div>
+</section>
+
+{% include "snippets/reviews.html" %}
+{% endblock content %}

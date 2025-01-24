@@ -1,0 +1,86 @@
+{% load static %}
+<nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url "core:home" %}">
+            <img src="{% static 'img/logo.webp' %}" alt="Lunch.pk" style="margin-right: 3rem;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url "core:monthly-menus" %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Monthly Menus
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% for menu in menus %}
+                            {% if menu.nav_link %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url "core:menu" menu.slug %}">{{ menu.name|title }}{% if menu.breif_desc %} ({{ menu.breif_desc }}){% endif %}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url "core:deals" %}">Daily Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "core:frozen-deals" %}">Frozen Food</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "core:foodlancer" %}">Become a Foodlancer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "core:contact-us" %}">Contact</a>
+                </li>
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                        Dashboard
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dashboardDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:foodlancers-list' %}">
+                                <i class="bi bi-people me-2"></i> View All Foodlancers
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:invoice-list' %}">
+                                <i class="bi bi-receipt me-2"></i> View all Invoices
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:manage-menus' %}">
+                                <i class="bi bi-list-ul me-2"></i> Manage Menus
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:create-menu' %}">
+                                <i class="bi bi-plus-circle me-2"></i> Create Menu
+                            </a>
+                        </li>
+                        
+                        <!-- Deals Management -->
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:manage-deals' %}">
+                                <i class="bi bi-tag me-2"></i> Manage Deals
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'core:create-deal' %}">
+                                <i class="bi bi-plus-circle-dotted me-2"></i> Create Deal
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            {% endif %}
+            
+            </ul>
+        </div>
+    </div>
+</nav>

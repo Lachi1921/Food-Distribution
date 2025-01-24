@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Place an order | Lunch.pk{% endblock title %}
+
+{% block meta %}
+<meta name="description" content="Lunch.pk is Pakistan's best website to Order homemade food online. Available in Lhr, Isb, Khi, Rwp and More">
+<meta property="og:type" content="Thank you for your order">
+<meta property="og:title" content="Thank you for your order | Lunch.pk">
+<meta property="og:description" content="Lunch.pk is Pakistan's best website to Order homemade food online. Available in Lhr, Isb, Khi, Rwp and More">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Thank you for your order | Lunch.pk">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="Thank you for your order">
+<meta name="twitter:site" content="Thank you for your order">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Thank you for your order | Lunch.pk">
+<meta name="twitter:description" content="Lunch.pk is Pakistan's best website to Order homemade food online. Available in Lhr, Isb, Khi, Rwp and More">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block content %}
+<section class="py-5" style="background: none 0% 0% repeat scroll rgb(246, 244, 240); color: rgb(33, 37, 41);">
+    <div class="container py-5 text-center">
+        <h1 class="fw-bold py-3">Thank You For Your Order!</h1>
+        <p class="bg-white p-3">Your confirmation code is:<br> <strong>{{ order.order_number }}</strong></p>
+        <h4 class="fw-bold py-3">Please Whatsapp your confirmation code at +92 333 5189005 to complete your order</h4>
+        <p>Note: Lunch.pk is not responsible for payment in cash or direct to Anyone. We only accept bank transfer as the mentioned payment method on your invoice</p>            
+    <div>
+</section>
+{% endblock content %}

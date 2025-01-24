@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Best {{ deal.name|title }}, order online, Islamabad Lahore Karachi{% endblock title %}
+
+{% block meta %}
+<meta name="description" content="Lunch.pk is the best website to order homemade best {{ deal.name|title }} in islamabad lahore and karachi.">
+<meta property="og:type" content="{{ deal.name|title }} - {% if deal.frozen %}Frozen Food{% else %}Food Deal{% endif %}">
+<meta property="og:title" content="Best {{ deal.name|title }}, order online, Islamabad Lahore Karachi">
+<meta property="og:description" content="Lunch.pk is the best website to order homemade best {{ deal.name|title }} in islamabad lahore and karachi.">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Best {{ deal.name|title }}, order online, Islamabad Lahore Karachi">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="{{ deal.name|title }} - {% if deal.frozen %}Frozen Food{% else %}Food Deal{% endif %}">
+<meta name="twitter:site" content="{{ deal.name|title }} - {% if deal.frozen %}Frozen Food{% else %}Food Deal{% endif %}">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Best {{ deal.name|title }}, order online, Islamabad Lahore Karachi">
+<meta name="twitter:description" content="Lunch.pk is the best website to order homemade best {{ deal.name|title }} in islamabad lahore and karachi.">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{{ deal.image.url }}" class="img-fluid card-img-top" alt="{{ deal.name }}">
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="mx-3">
+                    <h1 class="fw-bold">{{ deal.name|title }}</h1>
+                    <ul class="nav my-3" role="tablist">
+                            <li role="presentation">
+                                <button class="cta-btn cta-btn-outline-primary me-3 active" id="3-serving-tab" data-bs-toggle="pill" data-bs-target="#pills-3" type="button" role="tab" aria-controls="pills-3" aria-selected="true">
+                                    3 Servings
+                                </button>
+                            </li>
+                            <li role="presentation">
+                                <button class="cta-btn cta-btn-outline-primary me-3" id="5-serving-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button" role="tab" aria-controls="pills-5">
+                                    5 Servings
+                                </button>
+                            </li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                            <div class="tab-pane fade show active" id="pills-3" role="tabpanel" aria-labelledby="3-serving-tab" tabindex="0">
+                                <h4 class="mb-3">PKR {{ deal.price }}</h4>
+                            </div>
+                            <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="5-serving-tab" tabindex="0">
+                                <h4 class="mb-3">PKR {{ deal.price|calc_price:5 }}</h4>
+                            </div>
+                    </div>
+                    
+
+                    <p class="mb-2">{{ deal.desc }}</p>
+                    <p class="fw-bold mb-2">Its not just TASTY. Its HEALTHY too!</p>
+                    <p class="mb-2" style="font-size: 1rem;">Ready to dispatch in 1 day </p>
+                    <p style="font-size: 1rem; font-weight: 500;">Free Delivery</p>
+                    {% for item in deal.deal_item.all|slice:":1" %}
+                        <a class="cta-btn cta-btn-primary" href="{% url "core:order" item.unique_id %}">Order Now</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="deals py-5" style="background: rgb(245, 248, 250);">
+    <div class="container">
+        <h1 class="h2 text-center fw-bold mb-5">You may also like</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
+            {% for deal in deals %}
+            <div class="col">
+                <div class="card mb-5" style="color: #2d3e50;border: none;">
+                    <img src="{{ deal.image.url }}" class="card-img-top" alt="{{ deal.name }}">
+                    <div class="card-body p-4" style="box-shadow: 0 0 8px 0 rgba(0,0,0,.12);">
+                        <h5 class="card-title">{{ deal.name|title }}</h5>
+                        <p class="card-text">
+                            {{ deal.desc|title }}
+                        </p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="mb-0">
+                                Ready to dispatch in <span class="text-color-primary">1 day</span>
+                            </h6>
+                            <a href="{% url "core:deal-details" deal.slug %}" class="cta-btn-primary p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" style="width: 22px; height: 22px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            No deals yet!
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+{% include "snippets/reviews.html" %}
+
+{% endblock content %}

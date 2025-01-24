@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Lunch, dinner, homemade food delivery, order online | Lunch.pk{% endblock title %}
+{% block description %}Lunch.pk is the best website to order homemade lunch, dinner, in islamabad lahore and karachi.lunch, dinner, homemade food delivery, order online, food delivery{% endblock description %}
+
+{% block meta %}
+<meta property="og:type" content="Home">
+<meta property="og:title" content="Lunch, dinner, homemade food delivery, order online | Lunch.pk">
+<meta property="og:description"
+    content="Lunch.pk is the best website to order homemade lunch, dinner, in islamabad lahore and karachi.lunch, dinner, homemade food delivery, order online, food delivery">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Lunch, dinner, homemade food delivery, order online | Lunch.pk">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="Home">
+<meta name="twitter:site" content="Home">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Lunch, dinner, homemade food delivery, order online | Lunch.pk">
+<meta name="twitter:description"
+    content="Lunch.pk is the best website to order homemade lunch, dinner, in islamabad lahore and karachi.lunch, dinner, homemade food delivery, order online, food delivery">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block css %}
+.hero-section {
+background: linear-gradient(to top right, #fef8f0, #fff3ee, #fff1ee) !important;
+color: #212529;
+}
+{% endblock css %}
+
+{% block content %}
+
+<section class="hero-section py-5">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-lg-6">
+                <img src="{% static "img/hero-char.webp" %}" class="d-block mx-lg-auto img-fluid" alt="Hero-character"
+                    width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Homemade Food by Families Near You</h1>
+                <p class="lead py-3">At Lunch.pk, You get homemade food by local families near you. We provide
+                    <strong>REAL HYGIENIC</strong> homemade food online delivery. Available in Islamabad, Lahore,
+                    Karachi and more</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="cta-btn cta-btn-primary cta-btn-lg see-menu-btn text-center" href="{% url "core:monthly-menus" %}">See Our Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="text-center py-5" style="background: #f5f8fa;">
+    <div class="container">
+        <h2 class="fw-bold">Order in <span class="text-color-primary">3 Simple Steps</span></h2>
+        <div class="mt-5 mb-3 row">
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">1</h2>
+                    <img src="{% static "img/menu-icon.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Choose a Menu</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">2</h2>
+                    <img src="{% static "img/clipboard.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Place your Order</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">3</h2>
+                    <img src="{% static "img/yummy-icon.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Enjoy your Food</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="fw-bold">Payment: Bank transfer (recommended), Cash to Rider, EasyPaisa</p>
+    </div>
+</section>
+
+<section class="text-white py-5" style="background: linear-gradient(45deg, #00a4bd, #00bda5);">
+    <div class="container text-sm-center">
+        <h2 class="fw-bold">Say Good Bye To Low Quality Food.</h2>
+        <p class="my-4" style="font-weight:500">WE SAVE YOU FROM UNHEALTHY TOXIC FOOD CHOICES BY SERVING YOU
+            REAL HEALTHY HOMEMADE FOOD AT YOUR DOORSTEP.</p>
+        <p class="my-4" style="font-weight:500">Not only health is most neglected aspect of our life, but we
+            have tons of unhealthy toxic food choices around us, making it hard to live a healthy life. That is
+            why Obesity, diabetes and heart diseases have become so common in our lives.</p>
+        <p class="fw-bold">NOT EVERYONE VALUE HYGIENIC FOOD… YOU DO!</p>
+        <a class="cta-btn cta-btn-primary cta-btn-lg text-center" href="{% url "core:monthly-menus" %}">See Our Menu</a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-lg-4 text-center">
+                <img src="{% static "img/office-guys.webp" %}" alt="office-guys" loading="lazy">
+            </div>
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Order Homemade Food For Your Office</h1>
+                <p class="lead py-3">We ensure quality of food and services. we hold your payment in
+                    company account until you are delivered complete days and
+                    satisfied with food provided.
+
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="cta-btn cta-btn-primary cta-btn-lg text-center" href="{% url "core:monthly-menus" %}">Corporate Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="text-center py-5" style="background: #425b76;">
+    <div class="container">
+        <h2 class="fw-bold text-white">Our Popular Monthly Menus</h2>
+        <div class="mt-5 mb-3 row">
+            {% for menu in popular_menus %}
+                <div class="col-lg-4 p-4">
+                    <div class="container bg-white py-3" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="font-size: 24px; font-weight: 700;">{{ menu.name }}</h5>
+                            <div class="my-3">
+                                <p class="my-2">For {{ menu.persons }} persons ({{ menu.meals }} time meal)</p>
+                                <p class="my-2">Mon - Fri ({{ menu.days }} days a month)</p>
+                            </div>
+                            <h4 class="font-weight-bold mb-3" style="font-size: 24px; font-weight: 600;">PKR {{ menu.price }}/-</h4>
+                            <a class="cta-btn cta-btn-primary" href="{% url "core:menu" menu.slug %}">See Menu</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-white text-center">No menus yet!</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">Do You Love <span class="text-color-primary">Cooking?</span></h1>
+                <p class="lead my-4">Join us as a foodlancer and start selling homemade food online.</p>
+                <p class="lead mb-5">Lunch.pk is a true home based business that empowers food passionate families by
+                    giving them an opportunity to sell homemade food on the internet. Join lunch.pk family today and
+                    start making money right from your home kitchen.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="cta-btn cta-btn-primary cta-btn-lg text-center" href="{% url "core:register-foodlancer" %}">Apply now</a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <img src="{% static "img/make-money.webp" %}" alt="Foodlancer" loading="lazy">
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% include "snippets/reviews.html" %}
+
+{% endblock content %}

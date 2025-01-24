@@ -1,0 +1,90 @@
+{% load custom_filters %}
+
+<footer class="py-5 border-top text-white" style="background: #2d3e50;">
+    <div class="container">
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase fw-bold mb-4">Useful Links</h5>
+
+                <ul class="list-unstyled mb-0">
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:home" %}">Home</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:deals" %}">Daily Menu</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:frozen-deals" %}">Frozen Food</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:foodlancer" %}">Become a Foodlancer</a>
+                    </li>
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:contact-us" %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase fw-bold mb-4">Monthly Menus
+                </h5>
+
+                <ul class="list-unstyled mb-0">
+                    {% for menu in menus|slice:":5" %}
+                    <li class="footer-item">
+                        <a class="footer-link" href="{% url "core:menu" menu.slug %}">{{ menu.name|title }}</a>
+                    </li>
+                    {% endfor %}
+                   
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase fw-bold mb-4">Daily Deals</h5>
+
+                <ul class="list-unstyled mb-0">
+                    {% for deal in footer_deals|slice:"0:5" %}
+                        {% if not deal.frozen %}
+                            <li class="footer-item">
+                                <a class="footer-link" href="{% url "core:deal-details" deal.slug %}">{{ deal.name|title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase fw-bold mb-4">Frozen Food</h5>
+
+                <ul class="list-unstyled mb-0">
+                    {% for deal in footer_fdeals|slice:"0:5" %}
+                        {% if deal.frozen %}
+                            <li class="footer-item">
+                                <a class="footer-link" href="{% url "core:deal-details" deal.slug %}">{{ deal.name|title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!--Grid column-->
+        </div>
+        <div class="my-3" style="background:#7c98b6;height:1px;width:98%"></div>
+        <div class="d-flex justify-content-between align-items-center py-4 my-4">
+      
+            <ul class="list-unstyled d-flex m-0">
+                <li class="me-3"><a class="footer-link" href="/terms-of-service">Terms of service</a></li>
+                <li class="me-3"> <a class="footer-link" href="/privacy-policy">Privacy Policy</a></li>
+            </ul>
+          <p style="font-size:12px; color:#cbd6e2; margin: 0;">Copyright © {% current_year %} Lunch.pk All rights reserved.</p>
+        </div>
+
+
+    </div>
+</footer>

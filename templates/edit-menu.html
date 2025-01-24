@@ -1,0 +1,476 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="fw-bold my-5" style="font-weight: 600;">Edit menu</h2>
+    <form method="POST" class="form">
+        {% csrf_token %}
+
+        <!-- General errors -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                        <li class="error-text">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="row mb-3">
+            <div class="mb-3 col-6">
+                <label for="id_name">Name:</label>
+                <input type="text" name="name" class="form-control shadow-none" maxlength="250" required="" id="id_name" value="{{ menu.name }}">
+                {% if form.name.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.name.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_breif_desc">Brief desc:</label>
+                <input type="text" name="breif_desc" class="form-control shadow-none" maxlength="100" id="id_breif_desc" value="{{ menu.breif_desc }}">
+                {% if form.breif_desc.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.breif_desc.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-12">
+                <label for="id_desc">Desc:</label>
+                <textarea name="desc" cols="40" rows="3" class="form-control shadow-none" maxlength="300" required="" id="id_desc">{{ menu.desc }}</textarea>
+                {% if form.desc.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.desc.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="mb-3 col-6">
+                <label for="id_price">Persons:</label>
+                <input type="number" name="persons" class="form-control shadow-none" required="" id="id_persons" value="{{ menu.persons }}">
+                {% if form.persons.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.persons.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Days:</label>
+                <input type="number" name="days" class="form-control shadow-none" required="" id="id_days" value="{{ menu.days }}">
+                {% if form.days.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.days.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Meals:</label>
+                <input type="number" name="meals" class="form-control shadow-none" required="" id="id_meals" value="{{ menu.meals }}">
+                {% if form.meals.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.meals.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_price">Price:</label>
+                <input type="number" name="price" class="form-control shadow-none" required="" id="id_price" value="{{ menu.price }}">
+                {% if form.price.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.price.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-12">
+                <label for="id_slug">Slug:</label>
+                <input type="text" name="slug" class="form-control shadow-none" required="" id="id_slug" value="{{ menu.slug }}">
+                {% if form.slug.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.slug.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_popular">Popular:</label>
+                <input type="checkbox" name="popular" class="form-check-input" id="id_popular" {% if menu.popular %}checked{% endif %}>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_nav_link">Nav link:</label>
+                <input type="checkbox" name="nav_link" class="form-check-input" id="id_nav_link" {% if menu.nav_link %}checked{% endif %}>
+            </div>
+        </div>
+
+        <!-- Week 1 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 1</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week1_mon_item">Mon Item:</label>
+                <input type="text" name="week1_mon_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_mon_item" value="{{ weekly_schedule.week1_mon_item }}">
+                {% if form.week1_mon_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_mon_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_tue_item">Tue Item:</label>
+                <input type="text" name="week1_tue_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_tue_item" value="{{ weekly_schedule.week1_tue_item }}">
+                {% if form.week1_tue_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_tue_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_wed_item">Wed Item:</label>
+                <input type="text" name="week1_wed_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_wed_item" value="{{ weekly_schedule.week1_wed_item }}">
+                {% if form.week1_wed_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_wed_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_thu_item">Thu Item:</label>
+                <input type="text" name="week1_thu_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_thu_item" value="{{ weekly_schedule.week1_thu_item }}">
+                {% if form.week1_thu_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_thu_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_fri_item">Fri Item:</label>
+                <input type="text" name="week1_fri_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_fri_item" value="{{ weekly_schedule.week1_fri_item }}">
+                {% if form.week1_fri_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_fri_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week1_sat_item">Sat Item:</label>
+                <input type="text" name="week1_sat_item" class="form-control shadow-none" maxlength="255" required="" id="id_week1_sat_item" value="{{ weekly_schedule.week1_sat_item }}">
+                {% if form.week1_sat_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week1_sat_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 2</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week2_mon_item">Mon Item:</label>
+                <input type="text" name="week2_mon_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_mon_item" value="{{ weekly_schedule.week2_mon_item }}">
+                {% if form.week2_mon_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_mon_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_tue_item">Tue Item:</label>
+                <input type="text" name="week2_tue_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_tue_item" value="{{ weekly_schedule.week2_tue_item }}">
+                {% if form.week2_tue_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_tue_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_wed_item">Wed Item:</label>
+                <input type="text" name="week2_wed_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_wed_item" value="{{ weekly_schedule.week2_wed_item }}">
+                {% if form.week2_wed_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_wed_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_thu_item">Thu Item:</label>
+                <input type="text" name="week2_thu_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_thu_item" value="{{ weekly_schedule.week2_thu_item }}">
+                {% if form.week2_thu_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_thu_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_fri_item">Fri Item:</label>
+                <input type="text" name="week2_fri_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_fri_item" value="{{ weekly_schedule.week2_fri_item }}">
+                {% if form.week2_fri_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_fri_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week2_sat_item">Sat Item:</label>
+                <input type="text" name="week2_sat_item" class="form-control shadow-none" maxlength="255" required="" id="id_week2_sat_item" value="{{ weekly_schedule.week2_sat_item }}">
+                {% if form.week2_sat_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week2_sat_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 3</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week3_mon_item">Mon Item:</label>
+                <input type="text" name="week3_mon_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_mon_item" value="{{ weekly_schedule.week3_mon_item }}">
+                {% if form.week3_mon_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_mon_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_tue_item">Tue Item:</label>
+                <input type="text" name="week3_tue_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_tue_item" value="{{ weekly_schedule.week3_tue_item }}">
+                {% if form.week3_tue_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_tue_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_wed_item">Wed Item:</label>
+                <input type="text" name="week3_wed_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_wed_item" value="{{ weekly_schedule.week3_wed_item }}">
+                {% if form.week3_wed_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_wed_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_thu_item">Thu Item:</label>
+                <input type="text" name="week3_thu_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_thu_item" value="{{ weekly_schedule.week3_thu_item }}">
+                {% if form.week3_thu_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_thu_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_fri_item">Fri Item:</label>
+                <input type="text" name="week3_fri_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_fri_item" value="{{ weekly_schedule.week3_fri_item }}">
+                {% if form.week3_fri_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_fri_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week3_sat_item">Sat Item:</label>
+                <input type="text" name="week3_sat_item" class="form-control shadow-none" maxlength="255" required="" id="id_week3_sat_item" value="{{ weekly_schedule.week3_sat_item }}">
+                {% if form.week3_sat_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week3_sat_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="row mb-3">
+            <h5 class="col-12 mb-4">Week 4</h5>
+            <div class="mb-3 col-6">
+                <label for="id_week4_mon_item">Mon Item:</label>
+                <input type="text" name="week4_mon_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_mon_item" value="{{ weekly_schedule.week4_mon_item }}">
+                {% if form.week4_mon_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_mon_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_tue_item">Tue Item:</label>
+                <input type="text" name="week4_tue_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_tue_item" value="{{ weekly_schedule.week4_tue_item }}">
+                {% if form.week4_tue_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_tue_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_wed_item">Wed Item:</label>
+                <input type="text" name="week4_wed_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_wed_item" value="{{ weekly_schedule.week4_wed_item }}">
+                {% if form.week4_wed_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_wed_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_thu_item">Thu Item:</label>
+                <input type="text" name="week4_thu_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_thu_item" value="{{ weekly_schedule.week4_thu_item }}">
+                {% if form.week4_thu_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_thu_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_fri_item">Fri Item:</label>
+                <input type="text" name="week4_fri_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_fri_item" value="{{ weekly_schedule.week4_fri_item }}">
+                {% if form.week4_fri_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_fri_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3 col-6">
+                <label for="id_week4_sat_item">Sat Item:</label>
+                <input type="text" name="week4_sat_item" class="form-control shadow-none" maxlength="255" required="" id="id_week4_sat_item" value="{{ weekly_schedule.week4_sat_item }}">
+                {% if form.week4_sat_item.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.week4_sat_item.errors %}
+                                <li class="error-text">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <button type="submit" class="cta-btn cta-btn-primary">Edit menu</button>
+    </form>
+
+</div>
+
+{% endblock content %}

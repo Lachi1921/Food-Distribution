@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Homemade Food - Lunch Dinner - order food online Islamabad, Lahore, Karachi{% endblock title %}
+{% block description %}Lunch.pk is Pakistan #1 website to order homemade food. You get tasty and healthy food cooked and delivered by families near you.{% endblock description %}
+
+{% block meta %}
+<meta name="description" content="Lunch.pk is Pakistan #1 website to order homemade food. You get tasty and healthy food cooked and delivered by families near you.">
+<meta property="og:type" content="Monthly Menus">
+<meta property="og:title" content="Homemade Food - Lunch Dinner - order food online Islamabad, Lahore, Karachi">
+<meta property="og:description" content="Lunch.pk is Pakistan #1 website to order homemade food. You get tasty and healthy food cooked and delivered by families near you.">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="og:site_name" content="Homemade Food - Lunch Dinner - order food online Islamabad, Lahore, Karachi">
+<meta property="og:image" content="{% static "img/logo.png" %}">
+<meta property="og:image:secure_url" content="{% static "img/logo.png" %}">
+<meta name="twitter:card" content="Monthly Menus">
+<meta name="twitter:site" content="Monthly Menus">
+<meta name="twitter:domain" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="twitter:title" content="Homemade Food - Lunch Dinner - order food online Islamabad, Lahore, Karachi">
+<meta name="twitter:description"
+    content="Lunch.pk is Pakistan #1 website to order homemade food. You get tasty and healthy food cooked and delivered by families near you.">
+<meta name="twitter:image" content="{% static "img/logo.png" %}">
+{% endblock meta %}
+
+{% block content %}
+
+<section style="background: rgb(245, 248, 250);">
+    <div class="container">
+        {% for menu in menus %}
+        <div class="py-5">
+            <div class="py-3 text-center">
+                <h2 class="fw-bold mb-3" style="font-weight: 600;">{{ menu.name|title }}</h2>
+                <p>{{ menu.desc }}</p>
+                <h4>PKR {{ menu.price }}</h4>
+            </div>
+            
+            <table class="table mb-3 table-striped">
+                <thead class="text-white" style="background-color: rgb(32, 196, 0);">
+                <tr>
+                    <th style="width: 15%;" scope="col">Day</th>
+                    <th style="width: 40%;" scope="col">Week 1</th>
+                    <th scope="col">Week 2</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in menu.weekly_schedules.all %}
+                        <tr>
+                            <th scope="row">Mon</th>
+                            <td>{{ schedule.week1_mon_item }}</td>
+                            <td>{{ schedule.week2_mon_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tue</th>
+                            <td>{{ schedule.week1_tue_item }}</td>
+                            <td>{{ schedule.week2_tue_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wed</th>
+                            <td>{{ schedule.week1_wed_item }}</td>
+                            <td>{{ schedule.week2_wed_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Thu</th>
+                            <td>{{ schedule.week1_thu_item }}</td>
+                            <td>{{ schedule.week2_thu_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fri</th>
+                            <td>{{ schedule.week1_fri_item }}</td>
+                            <td>{{ schedule.week2_fri_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sat</th>
+                            <td>{{ schedule.week1_sat_item }}</td>
+                            <td>{{ schedule.week2_sat_item }}</td>
+                        </tr>
+                    {% endfor %}
+                
+                </tbody>
+            </table>
+            <table class="table mb-3 table-striped">
+                <thead class="text-white" style="background-color: rgb(32, 196, 0);">
+                <tr>
+                    <th style="width: 15%;" scope="col">Day</th>
+                    <th style="width: 40%;" scope="col">Week 3</th>
+                    <th scope="col">Week 4</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in menu.weekly_schedules.all %}
+                        <tr>
+                            <!-- Days of the week -->
+                            <th scope="row">Mon</th>
+                            <td>{{ schedule.week3_mon_item }}</td>
+                            <td>{{ schedule.week4_mon_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tue</th>
+                            <td>{{ schedule.week3_tue_item }}</td>
+                            <td>{{ schedule.week4_tue_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wed</th>
+                            <td>{{ schedule.week3_wed_item }}</td>
+                            <td>{{ schedule.week4_wed_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Thu</th>
+                            <td>{{ schedule.week3_thu_item }}</td>
+                            <td>{{ schedule.week4_thu_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fri</th>
+                            <td>{{ schedule.week3_fri_item }}</td>
+                            <td>{{ schedule.week4_fri_item }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sat</th>
+                            <td>{{ schedule.week3_sat_item }}</td>
+                            <td>{{ schedule.week4_sat_item }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if menu.weekly_schedules.all %}
+                <div class="text-center">
+                    {% for item in menu.monthly_item.all|slice:":1" %}
+                        <a class="cta-btn cta-lg cta-btn-primary" href="{% url "core:order" item.unique_id %}">Order Now</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="text-white py-5" style="background: linear-gradient(45deg, #00a4bd, #00bda5);">
+    <div class="container text-center">
+        <h2 class="fw-bold">Your Payment and Quality is Ensured.</h2>
+        <p class="my-4" style="font-weight:500;">We ensure quality of food and services. we hold your payment in company account until you are delivered<br>
+            complete days and satisfied with food provided. You are no longer limited to one kitchen, we have number of<br>
+            family kitchens near you to meet your needs.</p>
+        <div class="pt-3">
+            {% for item in menu.monthly_item.all|slice:":1" %}
+                <a class="cta-btn cta-lg cta-btn-primary" href="{% url "core:order" item.unique_id %}">Order Now</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="text-center py-5" style="background: #f5f8fa;">
+    <div class="container">
+        <h2 class="fw-bold">Place order in <span class="text-color-primary">3 Simple Steps</span></h2>
+        <div class="mt-5 mb-3 row">
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">1</h2>
+                    <img src="{% static "img/order-now-click.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Click on Order Now</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">2</h2>
+                    <img src="{% static "img/bank-transfer-icon.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Pay via Bank Transfer</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-4">
+                <div class="container bg-white p-4" style="box-shadow: 0 8px 30px -5px rgba(51, 71, 91, 0.12);">
+                    <h2 class="font-weight-bold text-success text-left" style="text-align: start;">3</h2>
+                    <img src="{% static "img/food-test.svg" %}" alt="Menu" style="width: 100px;">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title">Enjoy the Food</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="h2 fw-bold mb-5">Frequently Asked Questions</h2>
+        <div class="faqs py-3">
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">Who will deliver me food?</h5>
+                    <p style="width: 85%;">You get food by families near you. living in 5-10 KMs in your area.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">What If I am not available or subscribe in middle or end of the month?</h5>
+                    <p style="width: 85%;">Our packages do not expire like Telco companies. We deliver you complete days. If you are not available on any day, let us know (1 day) in advance and we’ll record and deliver that meal to you on later days. In Economy package, Mazedar, Office, and Hostel package you ll get food for 22 days after subscription.</p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <div class="container">
+                    <h5 class="mb-3">How to Order?</h5>
+                    <p style="width: 85%;">1. Click on the ORDER NOW button below the menu you like <br><br>2. Fill in your DELIVERY ADDRESS and information <br><br>3. Wait for our CONFIRMATION CALL/EMAIL or notify us at +92 333 518 9005</p>
+                </div>
+            </div>
+        </div>
+        <p style="font-weight: 500">You can also pay for a week to test our service until you are fully satisfied to join monthly menu.</p>
+        <p style="font-weight: 500" class="mb-5">We have FIXED prices and we do not offer any discount below 100 people.</p>
+    </div>
+</section>
+
+{% include "weekly_trial.html" %}
+
+{% endblock content %}
