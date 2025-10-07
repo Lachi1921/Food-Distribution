@@ -43,7 +43,7 @@ Food Distribution Business Platform enables users to:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Lachi1921/lunch.pk.git
+git clone [https://github.com/Lachi1921/lunch.pk.git](https://github.com/Lachi1921/Food-Distribution/)
 cd lunch.pk
 ````
 
