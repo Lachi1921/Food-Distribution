@@ -2,11 +2,13 @@
 
 [![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue)]()
 
-A Django-based web application for restaurant and food delivery management. It allows you to create and organize menus, manage daily deals, and process customer orders. The admin interface provides tools for content management, order monitoring, and system configuration. The project uses Django templates for frontend rendering, static assets for styling and interactivity, and a modular Python backend to handle business logic. The full stack involves Python, Django, HTML, CSS, and JavaScript.---
+A Django-based web application for restaurant and food delivery management. It allows you to create and organize menus, manage daily deals, and process customer orders. The admin interface provides tools for content management, order monitoring, and system configuration. The project uses Django templates for frontend rendering, static assets for styling and interactivity, and a modular Python backend to handle business logic. The full stack involves Python, Django, HTML, CSS, and JavaScript.
+
+---
 
 ## Overview
 
-Lunch.pk enables users to:
+Food Distribution Business Platform enables users to:
 - Manage **menus** and **products**
 - Handle **customer orders** efficiently
 - Generate and track **invoices**
